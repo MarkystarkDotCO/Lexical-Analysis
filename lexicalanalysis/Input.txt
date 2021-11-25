@@ -1,11 +1,41 @@
-A + B
-A - B
+A2 / B
+AA = 3
+AA
+a-3
+-a
+d --
+--
+som++
++ ++
+++
+-
 *
+=
+==
+>
+>=
+<
+<=
+( ) 
+;
 if
 then
+else
+endif
+while
+do
+endwhile
+print
+newline
+read
+123
+1234
+9 new
 id1
 id2
 id1
-12dd
-“Hello World”
-/* comment */
+"Hello World"
+//comment
+/* comment            */
+“ aaaaa “
+12 faaa

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lexicalanalysis;
 
 import java.util.regex.Matcher;
@@ -12,23 +7,24 @@ public enum Token {
 
     //Operators
     TK_MINUS("-"),
-    TK_PLUS("\\+"),
+    TK_PLUS("\\+[^\\+]"),
     TK_MUL("\\*"),
-    TK_DIV("[^/]/[^/]"),
-    TK_LESS("<"),
+    TK_DIV("[^\\*\\/]{0}/[^\\*\\/]"),
+    //TK_DIV("/"),
+    TK_LESS("<[^=]"),
     TK_LEG("<="),
-    TK_GT(">"),
+    TK_GT(">[^=]"),
     TK_GEQ(">="),
     TK_EQ("=="),
     TK_ASSIGN("="),
-    //operator("\\[+-*]"),
-    // TK_Increment("+{2}"),
-    //TK_Decrement("-{2}"),
+    TK_DECREMENT("[^-]--[^-]"),
+    TK_INCREMENT("\\+\\+"),
 
     //() ;
     TK_OPEN("\\("),
     TK_CLOSE("\\)"),
     TK_SEMI(";"),
+    
     //Keywords
     TK_KEY_DEFINE("define"),
     TK_KEY_IF("if"),
@@ -41,28 +37,37 @@ public enum Token {
     TK_KEY_PRINT("print"),
     TK_KEY_NEWLINE("newline"),
     TK_KEY_READ("read"),
+    
     //Integers
-    INTEGER("\\d+"),
+    INTEGER("\\d+[^\\w+]"),
+    
     //Identifers
+    //IDENTIFIER("[^d]{0}(?:\\b[_a-zA-Z]|\\B\\$)[_$a-zA-Z0-9]*+"),
+    IDENTIFIER_Error("\\d+\\w+"),
     IDENTIFIER("\\w+"),
-    //String
-    STRING("\"[^\"]+\""),
+    
+    //"   U+0022 QUOTATION MARK
+    //“   U+201C LEFT DOUBLE QUOTATION MARK
+    //”   U+201D RIGHT DOUBLE QUOTATION MARK
+    STRING(".*\"([^\"]+)\".*"),
+    STRING1(".*\\“([^\\“]+)\\“.*"),
+    
     //WhiteSpace
     WHITESPACE(" "),
-    //New Line
-    //NEWLINE("\\r"),
-    NEWLINE("\\n"),
-    //NEWLINE3("\\t"),
     
+    //New Line
+    NEWLINE("\\n"),
+    /*/////////////////
+    */
     //Comments
-    COMMENT("(//.*$)|(/\\\\*.*?\\\\*/)");
-
-    // TK_COMMA (","), 
-    // TK_NOT ("~"), 
-    //TK_AND ("&"), 
-    //TK_OR ("\\|"),  
-    //OPEN_BRACKET ("\\{"),
-    //CLOSE_BRACKET ("\\}")
+    //comments("\"//.*|(\\\"(?:\\\\\\\\[^\\\"]|\\\\\\\\\\\"|.)*?\\\")|(?s)/\\\\*.*?\\\\*/\", \"$1 \" ),"),
+    //COMMENT("(//.*$)|(/\\\\*.*?\\\\*/)"),
+    Comment1("(/\\*.*?\\*/)"),
+    Comment2("//.*"),
+    //Comment3(".*\\/\\*([^\\/\\*]+)\\/\\*.*");
+    /*/**/
+    //COMMENTSSS("(//.*$)");
+    ;
     private final Pattern pattern;
 
     Token(String regex) {

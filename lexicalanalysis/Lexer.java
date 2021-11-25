@@ -1,22 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package lexicalanalysis;
 
-/**
- *
- * @author MethanonKaeokrachang
- */
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.stream.Stream;
 
 public class Lexer {
     //store charactors 1 line
@@ -60,7 +48,6 @@ public class Lexer {
             return;
         }
 
-        //removeWhiteSpaces();
 
         if (findNextToken()) {
             return;
@@ -102,11 +89,9 @@ public class Lexer {
 
     public String currentLexema() {
         if(lexema.equals("\n")){
-            token=null;
         return "";
         }
         if(lexema.equals(" ")){
-        token=null;
         return "";
         }
         return lexema;
