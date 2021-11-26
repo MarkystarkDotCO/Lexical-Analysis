@@ -16,7 +16,7 @@ public class LexicalAnalysis {
             String strLexema = lexer.currentLexema();
             Token strToken = lexer.currentToken();
 
-            if (!strToken.toString().equals("COMMENT")) {
+            if (!strToken.toString().equals("COMMENT")&&!strToken.toString().equals("COMMENT2")) {
                 //System.out.println(strToken.toString()+" "+strLexema);
                 if (!strToken.toString().equals("NEWLINE")) {
                     if (!strToken.toString().equals("WHITESPACE")) {
