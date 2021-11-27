@@ -17,18 +17,13 @@ public class LexicalAnalysis {
             Token strToken = lexer.currentToken();
 
             if (!strToken.toString().equals("COMMENT")&&!strToken.toString().equals("COMMENT2")) {
-                //System.out.println(strToken.toString()+" "+strLexema);
                 if (!strToken.toString().equals("NEWLINE")) {
                     if (!strToken.toString().equals("WHITESPACE")) {
                         if (strToken.toString().equals("IDENTIFIER_Error")) {
-                            //add
-                            //symbolTable.add(strLexema);
                             System.out.println(" Unexpexted Symbol : " + strLexema);
                             return;
                         }
                         if (strToken.toString().equals("IDENTIFIER")) {
-                            //add
-                            //symbolTable.add(strLexema);
                             if (map.get(strLexema) == null) {
                                 map.put(strLexema, strLexema);
                                 System.out.println(strToken.toString() + " : " + strLexema);
@@ -49,10 +44,10 @@ public class LexicalAnalysis {
         }
 
         //mean isn't error 
-        if (lexer.isSuccessful()) {
-        } else {
-            System.out.println(lexer.errorMessage());
-        }
+       // if (lexer.isSuccessful()) {
+        //} else {
+        //    System.out.println(lexer.errorMessage());
+        //}
     }
 
     public static String checkOperators(String st) {

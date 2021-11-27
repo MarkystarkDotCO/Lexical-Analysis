@@ -10,7 +10,6 @@ public enum Token {
     TK_PLUS("\\+[^\\+]"),
     TK_MUL("\\*"),
     TK_DIV("[^\\*\\/]{0}/[^\\*\\/]"),
-    //TK_DIV("/"),
     TK_LESS("<[^=]"),
     TK_LEG("<="),
     TK_GT(">[^=]"),
@@ -57,16 +56,9 @@ public enum Token {
     
     //New Line
     NEWLINE("\\n"),
-    /*/////////////////
-    */
-    //Comments
-    //comments("\"//.*|(\\\"(?:\\\\\\\\[^\\\"]|\\\\\\\\\\\"|.)*?\\\")|(?s)/\\\\*.*?\\\\*/\", \"$1 \" ),"),
-    //COMMENT("(//.*$)|(/\\\\*.*?\\\\*/)"),
+    
     COMMENT("(/\\*.*?\\*/)"),
     COMMENT2("//.*"),
-    //Comment3(".*\\/\\*([^\\/\\*]+)\\/\\*.*");
-    /*/**/
-    //COMMENTSSS("(//.*$)");
     ;
     private final Pattern pattern;
 

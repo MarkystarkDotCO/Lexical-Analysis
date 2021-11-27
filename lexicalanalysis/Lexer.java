@@ -2,20 +2,16 @@ package lexicalanalysis;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.Scanner;
-import java.util.Set;
 
 public class Lexer {
-    //store charactors 1 line
+    //store string of charactors
     private StringBuilder input = new StringBuilder();
- 
-    //
+    
     private Token token;
     private String lexema;
     private boolean exausthed = false;
     private String errorMessage = "";
-    private Set<Character> blankChars = new HashSet<Character>();
 
     //Lexer Read Input.txt
     public Lexer(String filePath) {
@@ -37,12 +33,12 @@ public class Lexer {
         //####################################
         moveAhead();
     }
-
+//
     public void moveAhead() {
         if (exausthed) {
             return;
         }
-
+        
         if (input.length() == 0) {
             exausthed = true;
             return;
@@ -66,7 +62,7 @@ public class Lexer {
         int i=0;
         for (Token t : Token.values()) {
             int end = t.endOfMatch(input.toString());
-            
+            //System.out.println(input.toString());
 
             if (end != -1) {
                 //get token
@@ -83,10 +79,12 @@ public class Lexer {
         return false;
     }
 
+    // get token type
     public Token currentToken() {
         return token;
     }
 
+    // get lexema
     public String currentLexema() {
         if(lexema.equals("\n")){
         return "";
@@ -97,14 +95,17 @@ public class Lexer {
         return lexema;
     }
 
+    // get message when success
     public boolean isSuccessful() {
         return errorMessage.isEmpty();
     }
 
+    // get message when not found token
     public String errorMessage() {
         return errorMessage;
     }
 
+    // check end of file
     public boolean isExausthed() {
         return exausthed;
     }
